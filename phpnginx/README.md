@@ -1,6 +1,5 @@
-pemcconnell/phpnginx
-====================
+### phpnginx
 
-The Dockerfile used to create pemcconnell/phpnginx, as found on the public docker registry
-
-If you wish to see an example of this in action please refer to https://github.com/pemcconnell/phpnginx-example.
+Super simple PHP5-FPM/NGINX container for quickly getting a PHP environment up
+and running. An example of how this image can be used can be found here:
+https://github.com/pemcconnell/phpnginx-example
