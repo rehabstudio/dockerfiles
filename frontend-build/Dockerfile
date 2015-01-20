@@ -29,5 +29,11 @@ RUN npm install -g grunt-cli gulp phantomjs
 RUN apt-get install -y ruby
 RUN gem install sass
 
-VOLUME ['/src']
+RUN mkdir /src
+RUN mkdir /src/node_modules
+
+ADD assets/package.json /src/
+RUN cd /src; npm install
+
+VOLUME ['/src/node_modules']
 WORKDIR /src
