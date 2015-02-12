@@ -9,6 +9,7 @@ RUN apt-get update && \
         inotify-tools \
         build-essential \
         sudo \
+        git \
         curl
 
 # install node from ppa
