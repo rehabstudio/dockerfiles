@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y \
     inotify-tools \
     python \
     python-pip \
+    graphviz \
     build-essential \
     openjdk-7-jre
 
