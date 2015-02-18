@@ -20,6 +20,7 @@ RUN apt-get update && apt-get install -y \
 RUN pip install \
     sphinx \
     sphinx-rtd-theme \
+    sphinxcontrib-images \
     sphinxcontrib-httpdomain
 
 # install plantuml
