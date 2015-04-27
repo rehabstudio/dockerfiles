@@ -24,7 +24,7 @@ RUN apt-get install -y \
 # npm-ception: install latest from npm
 RUN npm install -g npm
 # install global task runners and phantomjs
-RUN npm install -g grunt-cli gulp phantomjs
+RUN npm install -g grunt-cli gulp phantomjs webpack
 
 # install gulp sass requirements
 RUN apt-get install -y ruby
