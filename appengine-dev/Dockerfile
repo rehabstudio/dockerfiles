@@ -29,7 +29,7 @@ ADD ops/assets/motd /etc/motd
 
 # Download and install the Appengine Python SDK
 ADD ops/scripts/gaesdk_download.py /tmp/gaesdk_download.py
-RUN python /tmp/gaesdk_download.py 1.9.15
+RUN python /tmp/gaesdk_download.py 1.9.24
 ENV PATH /opt/google_appengine:$PATH
 
 # Remove tmp files
