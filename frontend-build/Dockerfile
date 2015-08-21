@@ -1,25 +1,26 @@
-FROM debian
+FROM debian:wheezy
 MAINTAINER Ryan Grieve <ryan@rehabstudio.com>
 
-# update, upgrade and install base requisites
+# install apt dependencies
 RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install -y \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y \
         apt-transport-https \
-        inotify-tools \
         build-essential \
-        sudo \
+        curl \
         git \
-        curl
-
-# install node from ppa
-RUN curl -sL https://deb.nodesource.com/setup | bash -
-RUN apt-get install -y nodejs
-
-# install phantomjs requirements
-RUN apt-get install -y \
+        inotify-tools \
+        libfontconfig1 \
         libfreetype6 \
-        libfontconfig1
+        ruby \
+        sudo && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# install Node stable
+RUN curl -sL https://deb.nodesource.com/setup | bash - && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y nodejs && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 # npm-ception: install latest from npm
 RUN npm install -g npm
@@ -27,7 +28,6 @@ RUN npm install -g npm
 RUN npm install -g grunt-cli gulp phantomjs webpack
 
 # install gulp sass requirements
-RUN apt-get install -y ruby
 RUN gem install sass
 
 RUN mkdir /src

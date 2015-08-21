@@ -1,20 +1,19 @@
 FROM debian:wheezy
 MAINTAINER Paddy Carey <patrick@rehabstudio.com>
 
-# update apt cache, upgrade the system and install the system utils we need
+# install apt dependencies 
 RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install -y \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y \
         apt-transport-https \
         build-essential \
+        libxslt1-dev \
         python-imaging \
         python-numpy \
         python-dev \
         python-pip \
-        sudo
-
-# lxml requirements
-RUN apt-get install -y libxslt1-dev
+        sudo && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 # install all the packages we need from pypi
 ADD ops/assets/requirements.txt /tmp/requirements.txt
