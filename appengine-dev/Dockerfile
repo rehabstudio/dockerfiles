@@ -28,11 +28,9 @@ ADD ops/assets/motd /etc/motd
 
 # Download and install the Appengine Python SDK
 ADD ops/scripts/gaesdk_download.py /tmp/gaesdk_download.py
-RUN python /tmp/gaesdk_download.py 1.9.24
+RUN python /tmp/gaesdk_download.py 1.9.24 && \
+    rm -rf /tmp/*
 ENV PATH /opt/google_appengine:$PATH
-
-# Remove tmp files
-RUN rm -r /tmp/*
 
 # Add volumes for pesistence between runs
 VOLUME ['/.ipython', '/home/aeuser']
@@ -42,9 +40,9 @@ RUN groupadd -r aeuser -g 1000 && \
     useradd -u 1000 -rg aeuser -md /home/aeuser -s /bin/bash aeuser
 
 # ensure aeuser owns volumes
-RUN mkdir /.ipython
-RUN chown -R aeuser:aeuser /.ipython
-RUN chown -R aeuser:aeuser /home/aeuser
+RUN mkdir /.ipython && \
+    chown -R aeuser:aeuser /.ipython && \
+    chown -R aeuser:aeuser /home/aeuser
 
 # add .bashrc for aeuser
 ADD ops/assets/bashrc /home/aeuser/.bashrc
