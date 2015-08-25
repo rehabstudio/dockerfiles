@@ -1,20 +1,19 @@
 FROM debian:wheezy
 MAINTAINER Paddy Carey <patrick@rehabstudio.com>
 
-# update apt cache, upgrade the system and install the system utils we need
+# install apt dependencies 
 RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install -y \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y \
         apt-transport-https \
         build-essential \
+        libxslt1-dev \
         python-imaging \
         python-numpy \
         python-dev \
         python-pip \
-        sudo
-
-# lxml requirements
-RUN apt-get install -y libxslt1-dev
+        sudo && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 # install all the packages we need from pypi
 ADD ops/assets/requirements.txt /tmp/requirements.txt
@@ -22,18 +21,15 @@ RUN pip install -r /tmp/requirements.txt
 
 # add remote shell script to allow python shell access to running instance
 ADD ops/scripts/remote_shell.py /usr/local/bin/remote_shell.py
-RUN chmod a+x /usr/local/bin/remote_shell.py
 
 # add custom motd to remind users of how persistance works
 ADD ops/assets/motd /etc/motd
 
 # Download and install the Appengine Python SDK
 ADD ops/scripts/gaesdk_download.py /tmp/gaesdk_download.py
-RUN python /tmp/gaesdk_download.py 1.9.24
+RUN /tmp/gaesdk_download.py 1.9.25 && \
+    rm -rf /tmp/*
 ENV PATH /opt/google_appengine:$PATH
-
-# Remove tmp files
-RUN rm -r /tmp/*
 
 # Add volumes for pesistence between runs
 VOLUME ['/.ipython', '/home/aeuser']
@@ -43,9 +39,9 @@ RUN groupadd -r aeuser -g 1000 && \
     useradd -u 1000 -rg aeuser -md /home/aeuser -s /bin/bash aeuser
 
 # ensure aeuser owns volumes
-RUN mkdir /.ipython
-RUN chown -R aeuser:aeuser /.ipython
-RUN chown -R aeuser:aeuser /home/aeuser
+RUN mkdir /.ipython && \
+    chown -R aeuser:aeuser /.ipython && \
+    chown -R aeuser:aeuser /home/aeuser
 
 # add .bashrc for aeuser
 ADD ops/assets/bashrc /home/aeuser/.bashrc

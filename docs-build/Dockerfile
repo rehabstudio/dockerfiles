@@ -1,27 +1,25 @@
-FROM debian
+FROM debian:wheezy
 MAINTAINER Ryan Grieve <me@ryangrieve.com>
 
-# no tty
-ENV DEBIAN_FRONTEND noninteractive
-
-# update apt cache, upgrade the system and install the system utils we need
-RUN apt-get update --fix-missing && apt-get upgrade -y
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    wget \
-    inotify-tools \
-    python \
-    python-pip \
-    graphviz \
-    build-essential \
-    openjdk-7-jre
+# install apt dependencies
+RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y \
+        build-essential \
+        graphviz \
+        inotify-tools \
+        openjdk-7-jre \
+        python \
+        python-pip \
+        wget && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 # install sphinx
 RUN pip install \
-    sphinx \
-    sphinx-rtd-theme \
-    sphinxcontrib-images \
-    sphinxcontrib-httpdomain
+        sphinx \
+        sphinx-rtd-theme \
+        sphinxcontrib-images \
+        sphinxcontrib-httpdomain
 
 # install plantuml
 RUN wget http://garr.dl.sourceforge.net/project/plantuml/plantuml.jar \
