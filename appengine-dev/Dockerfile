@@ -21,14 +21,13 @@ RUN pip install -r /tmp/requirements.txt
 
 # add remote shell script to allow python shell access to running instance
 ADD ops/scripts/remote_shell.py /usr/local/bin/remote_shell.py
-RUN chmod a+x /usr/local/bin/remote_shell.py
 
 # add custom motd to remind users of how persistance works
 ADD ops/assets/motd /etc/motd
 
 # Download and install the Appengine Python SDK
 ADD ops/scripts/gaesdk_download.py /tmp/gaesdk_download.py
-RUN python /tmp/gaesdk_download.py 1.9.24 && \
+RUN /tmp/gaesdk_download.py 1.9.24 && \
     rm -rf /tmp/*
 ENV PATH /opt/google_appengine:$PATH
 
