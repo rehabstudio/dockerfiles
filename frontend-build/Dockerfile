@@ -16,11 +16,12 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# install Node stable
+# install Node stable and latest npm
 RUN curl -sL https://deb.nodesource.com/setup | bash - && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y nodejs && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/* && \
+    npm install -g npm
 
 # install global task runners and phantomjs
 RUN npm install -g grunt-cli gulp phantomjs webpack
