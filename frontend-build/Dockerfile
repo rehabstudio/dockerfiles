@@ -11,6 +11,7 @@ RUN apt-get update && \
         inotify-tools \
         libfontconfig1 \
         libfreetype6 \
+        libpng-dev \
         ruby \
         sudo && \
     apt-get clean && \
