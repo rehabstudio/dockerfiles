@@ -15,6 +15,7 @@ RUN npm install -g npm
 
 # install global tools
 RUN npm install -g \
+    bower \
     gulp \
     vulcanize \
     crisper \
