@@ -12,7 +12,8 @@ RUN apt-get install -y nodejs
 
 # npm-ception: install latest from npm
 RUN npm install -g npm
-# install global task runners and phantomjs
+
+# install global tools
 RUN npm install -g \
     gulp \
     vulcanize \
