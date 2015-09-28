@@ -1,0 +1,25 @@
+{
+    "name": "polymer-dev",
+    "description": "A collection of tools for Polymer element development.",
+    "version": "0.0.0",
+    "license": "MIT",
+    "private": true,
+    "authors": [
+        "Ryan Grieve <ryan@rehabstudio.com"
+    ],
+    "devDependencies": {
+        "chai": "^3.3.0",
+        "gulp": "^3.9.0",
+        "gulp-autoprefixer": "^3.0.2",
+        "gulp-crisper": "0.0.5",
+        "gulp-imagemin": "^2.3.0",
+        "gulp-sass": "^2.0.4",
+        "gulp-vulcanize": "^6.0.1",
+        "lodash": "^3.10.1",
+        "mocha": "^2.3.3",
+        "sinon": "^1.17.1",
+        "through2": "^2.0.0",
+        "web-component-tester": "^3.3.22",
+        "yargs": "^3.26.0"
+    }
+}
