@@ -1,40 +1,37 @@
-FROM debian
+FROM debian:wheezy
 MAINTAINER Ryan Grieve <ryan@rehabstudio.com>
 
-# update, upgrade and install base requisites
+# install apt dependencies
 RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install -y \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y \
         apt-transport-https \
-        inotify-tools \
         build-essential \
-        sudo \
+        curl \
         git \
-        curl
-
-# install node from ppa
-RUN curl -sL https://deb.nodesource.com/setup | bash -
-RUN apt-get install -y nodejs
-
-# install phantomjs requirements
-RUN apt-get install -y \
+        inotify-tools \
+        libfontconfig1 \
         libfreetype6 \
-        libfontconfig1
+        libpng-dev \
+        ruby \
+        sudo && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
-# npm-ception: install latest from npm
-RUN npm install -g npm
+# install Node stable and latest npm
+RUN curl -sL https://deb.nodesource.com/setup | bash - && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y nodejs && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* && \
+    npm install -g npm
+
 # install global task runners and phantomjs
 RUN npm install -g grunt-cli gulp phantomjs webpack
 
 # install gulp sass requirements
-RUN apt-get install -y ruby
 RUN gem install sass
 
-RUN mkdir /src
-RUN mkdir /src/node_modules
-
 ADD assets/package.json /src/
-RUN cd /src; npm install
+RUN cd /src && npm install
 
 VOLUME ['/src/node_modules']
 WORKDIR /src
