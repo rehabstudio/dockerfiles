@@ -7,7 +7,7 @@ RUN apt-get update && \
     apt-get install -y build-essential git curl
 
 # install node from ppa
-RUN curl -sL https://deb.nodesource.com/setup | bash -
+RUN curl -sL https://deb.nodesource.com/setup_4.x | bash -
 RUN apt-get install -y nodejs
 
 # npm-ception: install latest from npm
