@@ -22,7 +22,7 @@ RUN curl -sL https://deb.nodesource.com/setup | bash - && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y nodejs && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
-    npm install -g npm
+    npm install -g npm@latest-2
 
 # install global task runners and phantomjs
 RUN npm install -g grunt-cli gulp phantomjs webpack
