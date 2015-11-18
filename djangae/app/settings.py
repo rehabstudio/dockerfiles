@@ -33,6 +33,7 @@ TEMPLATE_DEBUG = True
 INSTALLED_APPS = (
     'djangae',  # Djangae needs to come before django apps in django 1.7+
     'django.contrib.auth',
+    'django.contrib.admin',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -119,6 +120,7 @@ CSP_DEFAULT_SRC = (
 )
 CSP_STYLE_SRC = (
     "'self'",
+    "'unsafe-inline'",
     "fonts.googleapis.com",
     "*.gstatic.com"
 )
