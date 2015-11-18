@@ -24,11 +24,10 @@ ENV PATH /opt/google_appengine:$PATH
 ADD . /src
 WORKDIR /src
 
+RUN pip install -r requirements.txt -t sitepackages
 
 EXPOSE 8000 8001 8002
-
-ENTRYPOINT ["python", "manage.py"]
-
+CMD ["python", "manage.py", "runserver"]
 
 ONBUILD ADD ./requirements.txt .
 ONBUILD RUN pip install -r requirements.txt -t sitepackages
