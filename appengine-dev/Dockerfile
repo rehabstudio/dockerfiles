@@ -32,7 +32,7 @@ RUN /tmp/gaesdk_download.py 1.9.26 && \
 ENV PATH /opt/google_appengine:$PATH
 
 # Add volumes for pesistence between runs
-VOLUME ['/.ipython', '/home/aeuser']
+VOLUME ["/.ipython", "/home/aeuser"]
 
 # create a non-root user we can use to run the application inside the container
 RUN groupadd -r aeuser -g 1000 && \
