@@ -1,4 +1,4 @@
-FROM buildpack-deps:vivid
+FROM buildpack-deps:wily
 MAINTAINER Ricky Dunlop <ricky@rehabstudio.com>
 
 # NodeJS
