@@ -29,5 +29,5 @@ RUN mkdir /src/node_modules
 ADD assets/package.json /src/
 RUN cd /src; npm install
 
-VOLUME ['/src/node_modules']
+VOLUME ["/src/node_modules"]
 WORKDIR /src
