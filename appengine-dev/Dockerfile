@@ -39,7 +39,7 @@ RUN groupadd -r aeuser -g 1000 && \
     useradd -u 1000 -rg aeuser -md /home/aeuser -s /bin/bash aeuser
 
 # ensure aeuser owns volumes
-RUN mkdir /.ipython && \
+RUN mkdir -p /.ipython && \
     chown -R aeuser:aeuser /.ipython && \
     chown -R aeuser:aeuser /home/aeuser
 
