@@ -1,11 +1,13 @@
 FROM rehabstudio/nodejs-ffmpeg
 
-RUN mkdir -p /app
-WORKDIR /app
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
 
-ONBUILD ADD package.json /app/package.json
-ONBUILD RUN npm cache clean && npm install --production
-ONBUILD COPY . /app
+ONBUILD COPY package.json /usr/src/package.json
+ONBUILD WORKDIR /usr/src
+ONBUILD RUN npm install
+
+ONBUILD WORKDIR /usr/src/app
 
 EXPOSE 3000
 
