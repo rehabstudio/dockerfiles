@@ -7,7 +7,7 @@ RUN apt-get update && \
         libcairo2-dev \
         libjpeg8-dev \
         libpango1.0-dev \
-        libgif-dev &&
+        libgif-dev && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
