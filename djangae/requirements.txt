@@ -1,12 +1,13 @@
-git+https://github.com/potatolondon/djangae.git#egg=djangae
-django==1.8
+git+https://github.com/potatolondon/djangae.git@a97d8907a254a96e245465716d89d252f1cd13c8#egg=djangae
+django==1.8.11
 django-secure
 django-csp
 git+https://github.com/adamalton/django-csp-reports.git#egg=cspreports
 django-session-csrf
 nose
 six
-lxml==3.4.1
+lxml==2.3.5
+MySQL-python==1.2.5
 
 # Uncomment these to use mapreduce or djangae.contrib.uniquetool (which uses mapreduce)
 # These are forks of Google's libraries, which contain various fixes and patches
