@@ -1,5 +1,5 @@
-git+https://github.com/potatolondon/djangae.git#egg=djangae
-django==1.8
+git+https://github.com/potatolondon/djangae.git@a97d8907a254a96e245465716d89d252f1cd13c8#egg=djangae
+django==1.8.11
 django-secure
 django-csp
 git+https://github.com/adamalton/django-csp-reports.git#egg=cspreports
