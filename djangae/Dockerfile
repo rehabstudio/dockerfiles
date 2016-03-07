@@ -6,6 +6,10 @@ RUN apt-get update && \
         apt-transport-https \
         build-essential \
         libxslt1-dev \
+        mysql-client \
+        libmysqlclient-dev \
+        ipython \
+        sqlite3 \
         python-imaging \
         python-numpy \
         python-dev \
