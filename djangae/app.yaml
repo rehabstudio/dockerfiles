@@ -4,6 +4,10 @@ runtime: python27
 api_version: 1
 threadsafe: true
 
+libraries:
+- name: lxml
+  version: 2.3.5
+
 handlers:
 
 - url: /_ah/(mapreduce|queue|warmup|internalupload).*
