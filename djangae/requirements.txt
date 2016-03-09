@@ -1,4 +1,4 @@
-djangae==0.9.3
+djangae==git+https://github.com/potatolondon/djangae.git@ebc35bf46e242958f1329c0ba836955cc528920a#egg=djangae
 django==1.8.11
 django-secure
 django-csp
