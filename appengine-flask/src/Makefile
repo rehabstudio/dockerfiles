@@ -1,5 +1,5 @@
 # bring Flask server up
-run:
+run: deps
 	dev_appserver.py . \
 		--skip_sdk_update_check=yes \
 		--host=0.0.0.0 \
@@ -10,8 +10,12 @@ run:
 		--api_port=8082
 
 
+deps: requirements.txt
+	pip install -r requirements.txt -t lib
+
+
 # deploy to the configured APP and VERSION. Will force a migration first.
-deploy:
+deploy: deps
 	appcfg.py update . \
 		--oauth2 \
 		--oauth2_credential_file=/tmp/.deploy_credentials \
@@ -25,4 +29,4 @@ clean:
 
 
 # Makefile ettiquette
-.PHONY: run deploy clean
+.PHONY: run deps deploy clean
