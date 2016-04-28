@@ -25,16 +25,10 @@ RUN /tmp/gaesdk_download.py 1.9.33 && \
     rm -rf /tmp/*
 ENV PATH /opt/google_appengine:$PATH
 
-ADD . /src
 WORKDIR /src
-
-RUN pip install -r requirements.txt -t sitepackages
 
 EXPOSE 8000 8001 8002
 CMD ["python", "manage.py", "runserver"]
 
-ONBUILD ADD ./requirements.txt .
-ONBUILD RUN pip install -r requirements.txt -t sitepackages
-
-ONBUILD ADD ./*.yaml /src/
-ONBUILD ADD ./app /src/app
+ONBUILD ADD /src /src
+ONBUILD RUN pip install -r /src/requirements.txt -t /src/sitepackages
