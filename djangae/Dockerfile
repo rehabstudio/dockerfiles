@@ -1,8 +1,8 @@
 FROM debian:wheezy
 MAINTAINER Ryan Grieve <ryan@rehabstudio.com>
 
-RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y \
+RUN set -x && \
+    apt-get update && apt-get install -y --no-install-recommends \
         apt-transport-https \
         build-essential \
         libxslt1-dev \
