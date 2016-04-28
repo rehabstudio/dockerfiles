@@ -21,7 +21,7 @@ RUN apt-get update && \
 
 # Download and install the Appengine Python SDK
 ADD gaesdk_download.py /tmp/gaesdk_download.py
-RUN /tmp/gaesdk_download.py 1.9.33 && \
+RUN /tmp/gaesdk_download.py 1.9.36 && \
     rm -rf /tmp/*
 ENV PATH /opt/google_appengine:$PATH
 
