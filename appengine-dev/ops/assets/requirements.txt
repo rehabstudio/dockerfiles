@@ -9,6 +9,7 @@
 # control.
 
 coverage==3.7.1
+factory-boy==2.8.1
 ipython==2.2.0
 lxml==3.4.1
 mock==1.0.1
