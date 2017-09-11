@@ -16,7 +16,3 @@ RUN \
   rm -rf /var/lib/apt/lists/*
 
 EXPOSE 8081 8000 8080 35607
-
-WORKDIR /src
-
-ONBUILD ADD /src /src
