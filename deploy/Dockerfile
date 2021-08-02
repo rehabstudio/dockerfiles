@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:xenial-20210416
 
 RUN apt-get update; apt-get install -y lftp rsync ssh
 RUN mkdir /root/.ssh; echo "StrictHostKeyChecking no" > /root/.ssh/config
